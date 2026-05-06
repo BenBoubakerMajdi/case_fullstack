@@ -9,13 +9,7 @@
  */
 
 import { useState, useRef, type DragEvent, type ChangeEvent } from "react";
-import {
-  Upload,
-  FileText,
-  CheckCircle,
-  AlertCircle,
-  Loader2,
-} from "lucide-react";
+import { Upload, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 import toast from "react-hot-toast";
 
 // ---------------------------------------------------------------------------

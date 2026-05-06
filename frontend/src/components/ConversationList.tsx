@@ -55,7 +55,7 @@ interface ContextMenuProps {
   onDelete: () => void;
   onRename: () => void;
   onClose: () => void;
-  anchorRef: React.RefObject<HTMLButtonElement>;
+  anchorRef: React.RefObject<HTMLButtonElement | null>;
 }
 
 function ContextMenu({
@@ -207,9 +207,9 @@ export function ConversationList({
   onNew,
 }: ConversationListProps) {
   const [openMenuId, setOpenMenuId] = useState<string | null>(null);
-    const [renamingId, setRenamingId] = useState<string | null>(null);
-    
-    const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const [renamingId, setRenamingId] = useState<string | null>(null);
+
+  const menuButtonRef = useRef<HTMLButtonElement | null>(null);
 
   const handleRenameConfirm = async (id: string, newTitle: string) => {
     setRenamingId(null);
