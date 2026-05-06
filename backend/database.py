@@ -28,6 +28,11 @@ DATABASE_URL = os.getenv(
     "postgresql+asyncpg://matr:matr@localhost:5432/matr",
 )
 
+# Railway provides postgresql:// but asyncpg needs postgresql+asyncpg://
+if DATABASE_URL.startswith("postgresql://"):
+    DATABASE_URL = DATABASE_URL.replace(
+        "postgresql://", "postgresql+asyncpg://", 1)
+    
 # echo=False in production — set to True locally to see SQL queries
 engine = create_async_engine(
     DATABASE_URL,
