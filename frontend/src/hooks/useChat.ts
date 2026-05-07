@@ -249,6 +249,15 @@ export function useChat() {
     }
   }, []);
 
+  /**
+   * Reset frontend messages only — used when switching conversations.
+   * Does NOT call the backend or show a toast.
+   */
+  const resetMessages = useCallback(() => {
+    setMessages([]);
+    setError(null);
+  }, []);
+
   // ── stopMessage ───────────────────────────────────────────────────────────
   /**
    * Interrupt the current agent run by aborting the SSE stream.
@@ -302,6 +311,7 @@ export function useChat() {
     error,
     sendMessage,
     clearHistory,
+    resetMessages,
     stopMessage,
     loadMessagesFromHistory,
   };

@@ -304,6 +304,7 @@ export default function App() {
     isLoading,
     sendMessage,
     clearHistory,
+    resetMessages,
     stopMessage,
     loadMessagesFromHistory,
   } = useChat();
@@ -373,7 +374,7 @@ export default function App() {
   // ── Handle selecting a past conversation ──────────────────────────────
   const handleSelectConversation = async (id: string) => {
     setActiveConversationId(id);
-    clearHistory();
+    resetMessages();
 
     const data = await loadConversation(id);
     if (data?.messages) {
@@ -383,7 +384,7 @@ export default function App() {
 
   // ── Handle new conversation ────────────────────────────────────────────
   const handleNewConversation = async () => {
-    clearHistory();
+    resetMessages();
     setActiveConversationId(null);
   };
 
